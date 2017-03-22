@@ -1,0 +1,109 @@
+{
+  "name": "sk",
+  "version": "0.1.0",
+  "author": "Sofiane Khatir",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src --color",
+    "build:dev": "NODE_ENV=development webpack-dev-server --progress --config webpack.config.js",
+    "bundle:stats": "NODE_ENV=production webpack -p --config webpack.config.js --profile --json > stats.json",
+    "bundle:analyse": "webpack-bundle-analyzer ./stats.json ./build --report --mode=static",
+    "test": "NODE_ENV=testing mocha --require ignore-styles --require babel-core/register --reporter spec \"./**/__test__/*.js\" ",
+    "coverage": "NODE_ENV=testing nyc yarn test"
+  },
+  "dependencies": {
+    "antd": "^2.5.2",
+    "async-validator": "^1.6.8",
+    "babel-watch": "^2.0.5",
+    "body-parser": "^1.16.0",
+    "compression": "^1.6.2",
+    "debug": "^2.6.1",
+    "express": "^4.14.0",
+    "express-session": "^1.15.0",
+    "history": "^4.5.1",
+    "ignore-styles": "^5.0.1",
+    "ramda": "^0.23.0",
+    "react": "^15.0.2",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.0.2",
+    "react-helmet": "^3.2.3",
+    "react-markdown": "^2.4.6",
+    "react-redux": "^4.4.5",
+    "react-responsive": "^1.2.6",
+    "react-router-dom": "^4.0.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1",
+    "request": "^2.80.0",
+    "reselect": "^2.5.4",
+    "sanitize.css": "^4.1.0",
+    "serve-favicon": "^2.3.2",
+    "styled-components": "^1.2.1",
+    "uppercamelcase": "^1.1.0",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-import": "^1.1.0",
+    "babel-plugin-ramda": "^1.1.6",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "chai": "^3.5.0",
+    "css-loader": "^0.26.1",
+    "enzyme": "^2.6.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.0.0",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.1.1",
+    "should": "^11.1.2",
+    "sinon": "^1.17.7",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.0"
+  },
+  "nyc": {
+    "exclude": [
+      "build"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "latest",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "syntax-dynamic-import",
+      "transform-decorators-legacy",
+      "ramda",
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
+      ]
+    ]
+  }
+}
